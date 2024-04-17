@@ -17,3 +17,16 @@ print(str_list)  # ["s", "t", "r"]
 ```
 
 #### Step 3
+
+- 리스트에 문자열 또는 숫자가 포함되어 있는지 확인
+
+```python
+
+str_list = ["a", "b", "x", "e", "t"]
+
+if "a" in str_list:
+    print("'a' is in the str_list.")
+else:
+    print("'a' is not in the str_list.")
+
+```
