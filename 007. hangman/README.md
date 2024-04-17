@@ -50,3 +50,12 @@ from abe import zxc, iop
 
 ```
 - 유저 경험 개선
+- 콘솔 삭제 (terminal 에서 적용, PyCharm 에서는 동작하지 않는다.)
+
+```python
+
+from os import system
+system("cls") # window
+system("clear") # linux
+
+```
