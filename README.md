@@ -34,3 +34,7 @@
 
 - 함수
 - 반복문(while)
+
+#### [7 Day](007.%20hangman%2FREADME.md)
+
+- 행맨 게임
