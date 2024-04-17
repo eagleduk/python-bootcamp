@@ -38,4 +38,15 @@ else:
 #### Step 5
 
 - Module Import
+```python
+
+# 모듈만 import
+import abe
+abe.zxc
+abe.iop
+# 모듈의 속성만 import
+from abe import zxc, iop
+
+
+```
 - 유저 경험 개선
