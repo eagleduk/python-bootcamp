@@ -15,3 +15,5 @@ str = "str"
 str_list = list(str)
 print(str_list)  # ["s", "t", "r"]
 ```
+
+#### Step 3
