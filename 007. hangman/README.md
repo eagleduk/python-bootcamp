@@ -30,3 +30,7 @@ else:
     print("'a' is not in the str_list.")
 
 ```
+
+#### Step 4
+
+- 남은 목숨이 0 이 될 때까지 반복
