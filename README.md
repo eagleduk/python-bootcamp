@@ -42,3 +42,11 @@
 #### [8 Day](008.%20caesar%2FREADME.md)
 
 - 카이사르 암호화/복호화
+
+#### [9 Day](009.%20dictionary%2FREADME.md)
+
+- dictionary
+
+#### [10 Day](010.%20output_functions%2FREADME.md)
+
+- function with outputs
