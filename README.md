@@ -51,6 +51,12 @@
 
 - function with outputs
 
-#### [11 Day]
+#### 11 Day
 
 - blackjack
+
+#### [12 Day](012.%20scope%2FREADME.md)
+
+- scope
+
+> [ASCII to Text](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
