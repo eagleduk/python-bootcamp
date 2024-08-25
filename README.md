@@ -68,3 +68,8 @@
 #### [14 Day]
 
 - Higher-Lower Game
+
+#### [15 Day]
+
+- local Setting
+- Coffee Machine
