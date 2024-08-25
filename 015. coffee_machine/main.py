@@ -83,7 +83,7 @@ def order_coffee(answer):
     resources["coffee"] -= coffee_coffee
     resources["money"] += coffee_cost
 
-    print(f"Here is ${coins - coffee_cost} in change.")
+    print(f"Here is ${round(coins - coffee_cost, 2)} in change.")
     print(f"Here is your {answer} Enjoy!")
 
 
