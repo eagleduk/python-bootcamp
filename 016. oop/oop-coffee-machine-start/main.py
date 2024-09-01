@@ -9,7 +9,7 @@ money = MoneyMachine()
 is_run = True
 
 while is_run:
-    answer = input("What would you like? (espresso/latte/cappuccino): ")
+    answer = input(f"What would you like? ({coffee_menu.get_items()}): ")
 
     if answer == "off":
         is_run = False
