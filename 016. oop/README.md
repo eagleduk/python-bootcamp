@@ -13,3 +13,6 @@
 > [PrettyTable](https://github.com/jazzband/prettytable.git)
 
 - 아스키 코드 형식의 콘솔 테이블 라이브러리
+
+## Coffee Machine
+
