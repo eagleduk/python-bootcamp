@@ -9,3 +9,7 @@
 
 - 파이썬 관련 패키지 검색 사이트(Javascript-npm 과 비슷한 사이트)
 - `PyCham`: File-Setting-Project-Python 인터프리터 에서 패키지 검색 후 설치 가능
+
+> [PrettyTable](https://github.com/jazzband/prettytable.git)
+
+- 아스키 코드 형식의 콘솔 테이블 라이브러리
