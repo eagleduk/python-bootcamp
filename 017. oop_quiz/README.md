@@ -25,3 +25,7 @@ class User:
     def welcome(self):
         print(f"Hello, {self.name}!")
 ```
+
+> [!TIP]
+> 
+> [TRIVIA](https://opentdb.com/)
