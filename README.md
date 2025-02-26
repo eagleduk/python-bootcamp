@@ -82,3 +82,12 @@
 
 - Quiz Project
 - OOP merit
+
+#### [18 Day](018.%20gui%2FREADME.md)
+
+- Turtle Graphic
+
+#### [19 Day](019.%20listener%2FREADME.md)
+
+- Turtle Event Listener
+- High Functions
