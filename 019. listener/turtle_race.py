@@ -26,9 +26,10 @@ while game_over is False:
         random_move = random.randint(0, 10)
         now_x = t.xcor()
         next_x = now_x + random_move
-        t.setx(next_x)
+        if game_over is False:
+            t.setx(next_x)
 
-        if next_x >= 250:
+        if next_x >= 230:
             game_over = True
             winner_turtle = t.fillcolor() if winner_turtle is None else winner_turtle
 
