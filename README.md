@@ -95,3 +95,7 @@
 #### [20 Day](020.%20snake_game_part1%2FREADME.md)
 
 - Part 1
+
+#### [21 Day](021.%20snake_game_part2%2FREADME.md)
+
+- Inheritance
