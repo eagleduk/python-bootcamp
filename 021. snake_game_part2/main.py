@@ -2,6 +2,7 @@ from turtle import Screen, Turtle
 import time
 import snake
 import food
+import text
 
 
 def up():
@@ -27,7 +28,7 @@ screen.title("My Snake Game")
 screen.tracer(0)
 screen.listen()
 
-body_length = 3
+body_length = 13
 
 segments = []
 
@@ -43,17 +44,12 @@ for i in range(body_length):
 f = food.Food()
 f.render()
 is_game_on = True
-t = Turtle()
-t.color("white")
-t.penup()
-t.hideturtle()
-t.sety(280)
+t = text.Text()
+t.score_board()
 
 while is_game_on:
 
-    t.write(f"score: {score}", False, align="center")
-
-    time.sleep(0.3)
+    time.sleep(0.1)
     screen.update()
 
     forward_position = None
@@ -73,14 +69,17 @@ while is_game_on:
             p = segment.get_position()
 
             if p[0] < -300 or 300 < p[0] or p[1] < -300 or 300 < p[1]:
-                t.sety(0)
-                t.write(f"Game Over", False, align="center")
+                t.game_over()
                 is_game_on = False
+
+            for tails in segments[2:]:
+                if segment.distance(tails.get_position()) < 20:
+                    t.game_over()
+                    is_game_on = False
 
             if segment.distance(f.food) < 20:
                 f.render()
-                t.clear()
-                score = score + 1
+                t.increse_score()
                 segments.append(snake.SnakeSegment())
 
         else:
