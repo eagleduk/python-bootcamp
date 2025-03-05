@@ -72,7 +72,7 @@ while is_game_on:
                 t.game_over()
                 is_game_on = False
 
-            for tails in segments[2:]:
+            for tails in segments[1:]:
                 if segment.distance(tails.get_position()) < 20:
                     t.game_over()
                     is_game_on = False
