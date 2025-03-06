@@ -16,6 +16,15 @@ class Ball(Turtle):
         x = self.xcor() + self._x
         y = self.ycor() + self._y
 
+        # End Of Game
+        if 360 < self.xcor() or self.xcor() < -360:
+            self.home()
+
+            if 360 < self.xcor():
+                return 1, 0
+            else:
+                return 0, 1
+
         # bounce top, bottom wall
         if 280 <= y or y <= -280:
             self._y *= -1
@@ -27,6 +36,8 @@ class Ball(Turtle):
             self._x = 10
 
         self.goto(x, y)
+
+        return 0, 0
 
     def reset(self):
         self.home()
