@@ -20,6 +20,7 @@ screen.onkey(key="Up", fun=right_paddle.up)
 screen.onkey(key="Down", fun=right_paddle.down)
 screen.onkey(key="w", fun=left_paddle.up)
 screen.onkey(key="s", fun=left_paddle.down)
+screen.onkey(key="r", fun=ball.reset)
 
 
 on_game = True
@@ -28,7 +29,7 @@ while True:
     screen.update()
     time.sleep(0.1)
 
-    ball.run()
+    ball.run(right_paddle, left_paddle)
 
 
 screen.exitonclick()
