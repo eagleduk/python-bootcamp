@@ -99,3 +99,7 @@
 #### [21 Day](021.%20snake_game_part2%2FREADME.md)
 
 - Inheritance
+
+#### [22 Day](022.%20pong_game/README.md)
+
+- Pong game
