@@ -12,32 +12,17 @@ class Ball(Turtle):
         self.color("white")
         self.speed(0)
 
-    def run(self, rp, lp):
+    def run(self):
         x = self.xcor() + self._x
         y = self.ycor() + self._y
 
-        # End Of Game
-        if 360 < self.xcor() or self.xcor() < -360:
-            self.home()
-
-            if 360 < self.xcor():
-                return 1, 0
-            else:
-                return 0, 1
-
-        # bounce top, bottom wall
-        if 280 <= y or y <= -280:
-            self._y *= -1
-
-        # bounce paddle
-        if self.distance(rp) < 40 and 320 < self.xcor():
-            self._x = -10
-        elif self.distance(lp) < 40 and self.xcor() < -320:
-            self._x = 10
-
         self.goto(x, y)
 
-        return 0, 0
+    def bounce_x(self):
+        self._x *= -1
+
+    def bounce_y(self):
+        self._y *= -1
 
     def reset(self):
         self.home()

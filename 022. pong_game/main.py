@@ -26,21 +26,35 @@ screen.onkey(key="s", fun=left_paddle.down)
 screen.onkey(key="r", fun=ball.reset)
 
 on_game = True
+sleep = 0.1
 
 while on_game:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(sleep)
 
     s = ball.run(right_paddle, left_paddle)
 
-    l = left_score.set_score(s[0])
-    r = right_score.set_score(s[1])
-
-    if l == 3 or r == 3:
-        on_game = False
-        if l == 3:
-            left_score.winner("LEFT")
+    # Score Game
+    if 360 < ball.xcor() or ball.xcor() < -360:
+        if 360 < ball.xcor():
+            left_score.set_score(1)
         else:
-            right_score.winner("RIGHT")
+            right_score.set_score(1)
+        ball.bounce_x()
+        ball.home()
+        sleep = 0.1
+
+    # bounce top, bottom wall
+    if 280 <= ball.ycor() or ball.ycor() <= -280:
+        ball.bounce_y()
+
+    # bounce paddle
+    if ball.distance(right_paddle) < 40 and 320 < ball.xcor():
+        ball.bounce_x()
+        sleep *= 0.9
+    elif ball.distance(left_paddle) < 40 and ball.xcor() < -320:
+        ball.bounce_x()
+        sleep *= 0.9
+
 
 screen.exitonclick()
