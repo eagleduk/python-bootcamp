@@ -1,3 +1,4 @@
+import random
 from turtle import Screen
 import time
 
@@ -7,55 +8,45 @@ from textBoard import TextBoard
 
 screen = Screen()
 screen.setup(width=600, height=600)
+screen.title("Turtle Crossing")
+screen.tracer(0)
+screen.listen()
 
-def game_start(s, l):
-    s.title("Turtle Crossing")
-    s.tracer(0)
-    s.listen()
-    p = Player()
-    t = TextBoard()
+player = Player()
+textBoard = TextBoard()
+cars = []
 
-    s.onkey(key="Up", fun=p.up)
-
-    t.write_level(l)
-
-    return p, t, []
+screen.onkey(key="Up", fun=player.up)
 
 level = 1
 is_game_over = False
 
-player, textBoard, cars = game_start(screen, level)
+textBoard.write_level(level)
 
 while not is_game_over:
     time.sleep(0.1)
     screen.update()
 
-    print(len(cars))
-
-    if len(cars) < 10:
+    if random.randint(0, 10) < level:
         cars.append(Car())
 
-    for index in range(len(cars)):
-        car = cars[index]
-        car.move()
+    for car in cars:
+        car.move(level)
 
-        if player.distance(car) < 10:
+        if player.distance(car) < 20.0 :
             print("GAME OVER")
             textBoard.game_over()
-            # is_game_over = True
+            is_game_over = True
 
         if car.ycor() < -280:
             car.gone()
-            cars.pop()
 
     if player.goal():
         print("Goal")
         level += 1
 
-        screen.reset()
-        player, textBoard, cars = game_start(screen, level)
+        player.re_game()
+        textBoard.write_level(level)
 
-        # screen.update()
-        # cars.clear()
 
 screen.exitonclick()
