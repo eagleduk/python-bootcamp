@@ -21,10 +21,8 @@ class Text:
     def game_over(self):
         self.text.sety(0)
         self.text.write(f"GAME OVER", align="center", font=('Arial', 32, 'normal'))
-        if self.score > self.high_score:
-            with open(SCORE_FILE, mode="w") as f:
-                    f.write(str(self.score))
-            self.high_score = self.score
+        with open(SCORE_FILE, mode="w") as f:
+                f.write(str(self.high_score))
 
         self.score = 0
         
@@ -32,5 +30,17 @@ class Text:
         self.score += 1
         if self.score > self.high_score:
             self.high_score = self.score
+        self.text.clear()
+        self.score_board()
+
+    def re_game(self):
+        self.text.color("white")
+        self.text.penup()
+        self.text.hideturtle()
+        self.text.sety(265)
+        self.score = 0
+        with open(SCORE_FILE) as f:
+                content = f.read()
+                self.high_score = int(content)
         self.text.clear()
         self.score_board()

@@ -20,10 +20,16 @@ t = text.Text()
 t.score_board()
 is_game_on = True
 
+def re_game():
+    segments.re_game()
+    t.re_game()
+
 screen.onkey(key="Up", fun=segments.up)
 screen.onkey(key="Down", fun=segments.down)
 screen.onkey(key="Left", fun=segments.left)
 screen.onkey(key="Right", fun=segments.right)
+screen.onkey(key="r", fun=re_game)
+screen.onkey(key="q", fun=screen.bye)
 
 while is_game_on:
     segments.move()
@@ -38,7 +44,7 @@ while is_game_on:
 
     if x < -280 or 280 < x or y < -280 or 280 < y:
         t.game_over()
-        is_game_on = False
+        segments.stop()
 
     if head_segment.distance(f.food) < 20:
         f.render()
@@ -48,6 +54,6 @@ while is_game_on:
     for tails in body_segment:
         if head_segment.distance(tails) < 20:
             t.game_over()
-            is_game_on = False
+            segments.stop()
 
 screen.exitonclick()

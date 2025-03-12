@@ -7,7 +7,7 @@ class SnakeSegment:
     segments = []
 
     def __init__(self):
-
+        self.forward = 20
         for i in range(BODY_LENGTH):
             seg = turtle.Turtle(shape="square")
             seg.penup()
@@ -17,10 +17,11 @@ class SnakeSegment:
             self.segments.append(seg)
 
     def move(self):
+
         x = self.segments[0].xcor()
         y = self.segments[0].ycor()
 
-        self.segments[0].forward(20)
+        self.segments[0].forward(self.forward)
 
         for segment in self.segments[1:]:
             nx = segment.xcor()
@@ -51,3 +52,23 @@ class SnakeSegment:
         seg.color("white")
 
         self.segments.append(seg)
+
+    def stop(self):
+        self.forward = 0
+
+    def re_game(self):
+        self.forward = 20
+
+        for segment in self.segments:
+            segment.goto(1000, 1000)
+
+        self.segments = []
+
+        for i in range(BODY_LENGTH):
+            seg = turtle.Turtle(shape="square")
+            seg.penup()
+            seg.color("white")
+            seg.goto(-i * 20, 0)
+
+            self.segments.append(seg)
+
