@@ -116,3 +116,8 @@
 
 - CSV
 - pandas
+
+#### [26 Day](026.%20list_and_dictionary/README.md)
+
+- list
+- dictionary
