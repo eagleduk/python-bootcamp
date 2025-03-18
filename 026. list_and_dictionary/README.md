@@ -13,3 +13,12 @@ new_list = [i for i in list]
 list = []
 new_list = [i for i in list if test]
 ```
+
+#### Dictionary Comprehension
+
+```python
+dict = {}
+new_dict = {item:dict[item] for item in dict}
+new_dict_2 = {key:value for (key, value) in dict.items()}
+new_dict_3 = {key:value for (key, value) in dict.items() if test}
+```
