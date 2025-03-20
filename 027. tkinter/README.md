@@ -1,6 +1,10 @@
 #### Tkinter
 
 - [TK Options](https://www.tcl-lang.org/man/tcl8.6.13/TkCmd/contents.htm)
+- Widget 들을 화면에 표현할때, `pack`, `place`, `grid`로 위치를 지정할 수 있다.
+  - pack 은 화면의 상,하,좌,우 로 위치시킨다.
+  - place 는 구체적인 좌표(x,y)로 위치시킨다.
+  - grid 는 행과 열을 사용하여 위치시킨다.
 
 #### Default Arguments
 
