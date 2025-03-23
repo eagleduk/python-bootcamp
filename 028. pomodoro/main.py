@@ -10,32 +10,42 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 repos = 0
+timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def count_reset():
     canvas.itemconfig(timer_text, text="00:00")
 
+    timer_label["text"]="Timer"
+    timer_label["fg"]=GREEN
+
+    window.after_cancel(timer)
+
+    check_label["text"] = ""
+
+    global repos
+    repos = 0
+
+
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_event():
     global repos
-    work_sec = WORK_MIN * 1
-    short_break_sec = SHORT_BREAK_MIN * 1
-    long_break_sec = LONG_BREAK_MIN * 1
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
 
     if repos == 0 or repos == 2 or repos == 4 or repos == 6:
-        timer_label["text"]="Work"
-        timer_label["fg"]=GREEN
+        timer_label["text"] = "Work"
+        timer_label["fg"] = GREEN
         count_down(work_sec)
     elif repos == 1 or repos == 3 or repos == 5:
-        timer_label["text"]="Break"
-        timer_label["fg"]=PINK
+        timer_label["text"] = "Break"
+        timer_label["fg"] = PINK
         count_down(short_break_sec)
     elif repos == 7:
-        timer_label["text"]="Break"
-        timer_label["fg"]=RED
+        timer_label["text"] = "Break"
+        timer_label["fg"] = RED
         count_down(long_break_sec)
-
-    repos += 1
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
@@ -44,11 +54,16 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{str(count_min).zfill(2)}:{str(count_sec).zfill(2)}")
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        global timer
+        timer = window.after(1000, count_down, count - 1)
     else:
-        start_event()
+        global repos
+
         if repos == 0 or repos == 2 or repos == 4 or repos == 6:
             check_label["text"] += "✔"
+
+        repos += 1
+        start_event()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
