@@ -1,7 +1,30 @@
 from tkinter import *
 from tkinter import messagebox
+import random
+
+from pandas.io.clipboard import clipboard_set
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+def password_generator():
+    pw_list = []
+    pw_list += [random.choice(letters) for i in range(0, random.randint(8, 10))]
+    pw_list += [random.choice(numbers) for i in range(0, random.randint(2, 4))]
+    pw_list += [random.choice(symbols) for i in range(0, random.randint(2, 4))]
+
+    random.shuffle(pw_list)
+    password = ""
+
+    for char in pw_list:
+        password += char
+
+    pw_input.delete(0, END)
+    pw_input.insert(0, password)
+
+    clipboard_set(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
@@ -57,7 +80,7 @@ pw_label.grid(row=3, column=0)
 pw_input = Entry(width=28)
 pw_input.grid(row=3, column=1)
 
-pw_button = Button(text="Generate Password", width=15)
+pw_button = Button(text="Generate Password", width=15, command=password_generator)
 pw_button.grid(row=3, column=2)
 
 add_button = Button(text="Add", width=45, command=save)
