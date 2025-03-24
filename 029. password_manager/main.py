@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -8,9 +9,22 @@ def save():
     id = id_input.get()
     pw = pw_input.get()
 
-    with open("data.txt", mode="a") as file:
-        content = f"{website} : {id} / {pw} \n"
-        file.write(content)
+    if len(website) == 0 or len(id) == 0 or len(pw) == 0:
+        messagebox.showerror(title="Invalid Input", message="Check Input Data")
+        return
+
+    confirm = messagebox.askokcancel(title=website, message="Save ID / PW ?")
+
+    if confirm:
+        with open("data.txt", mode="a") as file:
+            content = f"{website} : {id} / {pw} \n"
+            file.write(content)
+
+        website_input.delete(0, END)
+        pw_input.delete(0, END)
+        website_input.focus()
+
+        messagebox.showinfo(title="success", message="Save Success.")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
