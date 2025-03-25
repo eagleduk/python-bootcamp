@@ -127,3 +127,7 @@
 #### [28 Day](028.%20pomodoro/README.md)
 
 #### [29 Day](029.%20password_manager/README.md)
+
+#### [30 Day](030.%20exception/README.md)
+
+- Exception
