@@ -29,3 +29,12 @@ except TypeError as message:
 except KeyError as message:
     pass
 ```
+
+- `raise` 예외를 발생 시킨다
+
+```python
+try:
+    raise ValueError("Error 발생")
+except ValueError as message:
+    print(message)
+```
