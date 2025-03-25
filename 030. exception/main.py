@@ -6,6 +6,32 @@ import random
 from pandas.io.clipboard import clipboard_set
 import json
 
+# ---------------------------- SEARCH PASSWORD ------------------------------- #
+def search():
+    website = website_input.get()
+
+    if len(website) == 0:
+        return
+
+    try:
+        with open("data.json", mode="r") as f:
+            json_data = json.load(f)
+    except FileNotFoundError:
+        json_data = {}
+
+    try:
+        website_data = json_data[website]
+        id = website_data["id"]
+        pw = website_data["pw"]
+    except KeyError:
+        id = id_input.get()
+        pw = ""
+
+    id_input.delete(0,END)
+    id_input.insert(0, id)
+    pw_input.delete(0, END)
+    pw_input.insert(0, pw)
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -70,9 +96,12 @@ canvas.grid(row=0, column=1)
 website_label = Label(text="Website:", bg="white")
 website_label.grid(row=1, column=0)
 
-website_input = Entry(width=45)
+website_input = Entry(width=28)
 website_input.focus()
-website_input.grid(row=1, column=1, columnspan=2)
+website_input.grid(row=1, column=1)
+
+website_search = Button(text="Search", width=15, command=search)
+website_search.grid(row=1, column=2)
 
 id_label = Label(text="Email/Username:", bg="white")
 id_label.grid(row=2, column=0)
