@@ -1,6 +1,14 @@
 import tkinter
+import pandas
+import random
 
-from seaborn.external.husl import rgb_to_hex
+words_csv = pandas.read_csv("./data/french_words.csv")
+words = words_csv.to_dict(orient="records")
+
+def random_word():
+    choice_word = random.choice(words)
+    canvas.itemconfig(title_text, text="French")
+    canvas.itemconfig(word_text, text=choice_word["French"])
 
 screen = tkinter.Tk()
 screen.config(padx=50, pady=50, width=800, height=528, background="#b1ddc6")
@@ -17,7 +25,7 @@ wrong_button = tkinter.Button(image=wrong_image, highlightthickness=0, backgroun
 wrong_button.grid(row=1, column=0)
 
 right_image = tkinter.PhotoImage(file="./images/right.png")
-right_button = tkinter.Button(image=right_image, highlightthickness=0, background="#b1ddc6")
+right_button = tkinter.Button(image=right_image, highlightthickness=0, background="#b1ddc6", command=random_word)
 right_button.grid(row=1, column=1)
 
 
