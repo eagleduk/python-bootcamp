@@ -36,21 +36,27 @@ class QuizInterface:
 
         self.window.mainloop()
 
-    def next_question(self):
+    def next_question(self, results=False):
+        if results:
+            self.score += 1
+        self.score_label.config(text=f"Score: {self.score}")
         question_str = self.quiz.next_question()
+        self.canvas.config(bg="white")
         self.canvas.itemconfigure(self.question, text=question_str)
 
     def answer_true(self):
         results = self.quiz.check_answer("true")
-        self.score_board(results)
+        self.answer_feedback(results)
 
     def answer_false(self):
         results = self.quiz.check_answer("false")
-        self.score_board(results)
+        self.answer_feedback(results)
 
-    def score_board(self, results: bool):
+    def answer_feedback(self, results: bool):
+
+        self.window.after(1000, self.next_question, results)
+
         if results:
-            self.score += 1
-        self.score_label.config(text=f"Score: {self.score}")
-
-        self.next_question()
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
