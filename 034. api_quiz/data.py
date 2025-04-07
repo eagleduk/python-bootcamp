@@ -1,8 +1,13 @@
 import requests
 
-QUESTION_URL = "https://opentdb.com/api.php?amount=10&type=boolean"
+QUESTION_URL = "https://opentdb.com/api.php"
 
-response = requests.get("https://opentdb.com/api.php?amount=10&type=boolean")
+parameter = {
+    "amount": 10,
+    "type": "boolean"
+}
+
+response = requests.get(QUESTION_URL, params=parameter)
 
 response.raise_for_status()
 

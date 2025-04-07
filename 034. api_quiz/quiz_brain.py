@@ -18,4 +18,7 @@ class QuizBrain:
 
     def check_answer(self, user_answer: str) -> bool:
         correct_answer = self.current_question.answer
-        return user_answer.lower() == correct_answer.lower()
+        if user_answer.lower() == correct_answer.lower():
+            self.score += 1
+            return True
+        return False
