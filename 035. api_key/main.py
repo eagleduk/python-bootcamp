@@ -1,7 +1,12 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+# .env 파일 로드
+load_dotenv()
 
 OWM_URL = "https://api.openweathermap.org/data/2.5/forecast"
-api_key = ""
+api_key = os.getenv("OWM_APPKEY")
 
 OWM_PARAMS = {
     "lat": 37.28,
