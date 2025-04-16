@@ -53,3 +53,5 @@ put_graph_pixel_body = {
 # put_graph_pixel_response = requests.put(url=put_graph_pixel_endpoint, json=put_graph_pixel_body, headers=TOKENHEADERS)
 # print("Put Graph Pixel Response: " + put_graph_pixel_response.text)
 
+delete_graph_pixel_response = requests.delete(url=put_graph_pixel_endpoint, headers=TOKENHEADERS)
+print("Delete Graph Pixel Response: " + delete_graph_pixel_response.text)
