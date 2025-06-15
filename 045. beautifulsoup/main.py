@@ -1,25 +1,32 @@
 from bs4 import BeautifulSoup
+import requests
 
-with open("./website.html", encoding="UTF-8") as file:
-    contents = file.read()
+response = requests.get("https://appbrewery.github.io/news.ycombinator.com/")
 
-soup = BeautifulSoup(contents, "html.parser")
+html_content = response.text
 
-print(soup.prettify())
+soup = BeautifulSoup(html_content, "html.parser")
 
-print(soup.a)
-print(soup.a.get("href"))
-print(soup.a.getText())
+all_vote_tr_tags = soup.find_all(name="tr", class_="athing")
 
-first_anchor_tag = soup.find(name="a")
-print(first_anchor_tag)
+all_ranks = []
 
-all_anchor_tags = soup.find_all(name="a")
-print(all_anchor_tags)
-for tag in all_anchor_tags:
-    print(tag.getText())
+for vote_tr_tag in all_vote_tr_tags:
+    anchor = vote_tr_tag.find(name="a", class_="storylink")
+    text = anchor.getText()
+    href = anchor.get("href")
+    id = vote_tr_tag.get("id")
+    score_span = vote_tr_tag.find_next("tr").find(name="span", class_="score")
+    score = score_span.getText().split(" ")[0]
+    print(f"text: {text}, link: {href}, score={score}")
 
-all_selector_tags = soup.select(selector="a")
-print(all_selector_tags)
+    all_ranks.append({
+        "text": text,
+        "link": href,
+        "score": int(score)
+    })
 
-print(soup.select_one(selector="a"))
+print(all_ranks)
+
+sort_ranks = sorted(all_ranks, key=lambda x: x["score"], reverse=True)
+print(sort_ranks)
