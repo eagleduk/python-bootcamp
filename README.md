@@ -150,3 +150,29 @@
 #### [36 Day](036.%20api_stock)
 
 #### [37 Day](037.%20api_post)
+
+#### 38 Day
+
+#### 39 Day
+
+#### 40 Day
+
+#### 41 Day
+
+- Introduction HTML
+
+#### 42 Day
+
+- Intermediate HTML
+
+#### 43 Day
+
+- Introduction CSS
+
+#### 44 Day
+
+- Intermediate CSS
+
+#### [45 Day](045.%20beautifulsoup)
+
+- Beautiful Soup
