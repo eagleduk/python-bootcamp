@@ -36,3 +36,8 @@ soup.find_all(name="")
 soup.select_one(selector="")
 soup.select(selector="")
 ```
+
+### Web Scraping rules
+
+- URL + '/robots.txt' 를 방문하여 허용 endpoint를 확인한다.
+- 반복적인 요청으로 인해 트래픽 증가가 되지 않는 범위내에서 수행.
